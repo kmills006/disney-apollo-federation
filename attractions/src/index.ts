@@ -1,5 +1,7 @@
 import { ApolloServer } from 'apollo-server';
+import 'dotenv/config';
 
+import { PORT } from './config';
 import { AttractionsApi } from './datasources/AttractionsApi';
 import { resolvers } from './resolvers';
 import { typeDefs } from './type-defs';
@@ -15,7 +17,7 @@ const startServer = async () => {
     }),
   });
 
-  server.listen().then(({ url }: { url: string }) => {
+  server.listen({ port: PORT }).then(({ url }: { url: string }) => {
     console.log(`Apollo Server ready @ ${url}`);
   });
 };
