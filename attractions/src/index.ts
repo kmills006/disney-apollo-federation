@@ -7,8 +7,6 @@ import { resolvers } from './resolvers';
 import { typeDefs } from './type-defs';
 
 const startServer = async () => {
-  console.log('server started');
-
   const server = new ApolloServer({
     resolvers,
     typeDefs,
@@ -18,7 +16,7 @@ const startServer = async () => {
   });
 
   server.listen({ port: PORT }).then(({ url }: { url: string }) => {
-    console.log(`Apollo Server ready @ ${url}`);
+    console.log(`🎢 Attractions service running at ${url}`);
   });
 };
 
