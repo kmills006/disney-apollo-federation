@@ -2,6 +2,6 @@ import { gql } from 'apollo-server';
 
 export const Query = gql`
   type Query {
-    products: [Product]
+    attractions: [Attraction]
   }
 `;
