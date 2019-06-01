@@ -1,18 +1,21 @@
+import { buildFederatedSchema } from '@apollo/federation';
 import { ApolloServer } from 'apollo-server';
 import 'dotenv/config';
 
 import { PORT } from './config';
 import { DiningApi } from './datasources/DiningApi';
 import { resolvers } from './resolvers';
-import { typeDefs } from './type-defs';
+import { typeDefs } from './typeDefs';
 
 const startServer = async () => {
   const server = new ApolloServer({
-    resolvers,
-    typeDefs,
     dataSources: () => ({
       diningApi: new DiningApi(),
     }),
+    schema: buildFederatedSchema([{
+      resolvers,
+      typeDefs,
+    }] as any),
   });
 
   server.listen({ port: PORT }).then(({ url }: { url: string }) => {

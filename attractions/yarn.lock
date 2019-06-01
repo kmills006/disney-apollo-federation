@@ -2,6 +2,15 @@
 # yarn lockfile v1
 
 
+"@apollo/federation@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.6.0.tgz#dc3ab525a0666aac8ef069b5df7aa79bd92de153"
+  integrity sha512-QhupBfV2mfNu/9c9/WftF0q/2APZewb6IJX+BYnB18REHX32dnJlMkWo4aSdPkQOX+8IZm/vhTiM0um88ClSvg==
+  dependencies:
+    apollo-env "^0.5.0"
+    apollo-graphql "^0.3.0"
+    apollo-server-env "2.4.0"
+
 "@apollographql/apollo-tools@^0.3.6", "@apollographql/apollo-tools@^0.3.6-alpha.1":
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/@apollographql/apollo-tools/-/apollo-tools-0.3.7.tgz#3bc9c35b9fff65febd4ddc0c1fc04677693a3d40"
@@ -288,7 +297,7 @@ apollo-env@0.4.1-register.1:
     node-fetch "^2.2.0"
     sha.js "^2.4.11"
 
-apollo-env@0.5.1:
+apollo-env@0.5.1, apollo-env@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/apollo-env/-/apollo-env-0.5.1.tgz#b9b0195c16feadf0fe9fd5563edb0b9b7d9e97d3"
   integrity sha512-fndST2xojgSdH02k5hxk1cbqA9Ti8RX4YzzBoAB4oIe1Puhq7+YlhXGXfXB5Y4XN0al8dLg+5nAkyjNAR2qZTw==
@@ -303,6 +312,14 @@ apollo-graphql@^0.2.1-alpha.1:
   integrity sha512-Z2LOuvYomC9CN9K+mpFVcVQu6Ml5PIJlV+YOkGzFq73xeqWg1InxHqI3eEdCEhxTJq6H8rlWT8ATrMS+4sIhqw==
   dependencies:
     apollo-env "0.4.1-register.1"
+    lodash.sortby "^4.7.0"
+
+apollo-graphql@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/apollo-graphql/-/apollo-graphql-0.3.1.tgz#d13b80cc0cae3fe7066b81b80914c6f983fac8d7"
+  integrity sha512-tbhtzNAAhNI34v4XY9OlZGnH7U0sX4BP1cJrUfSiNzQnZRg1UbQYZ06riHSOHpi5RSndFcA9LDM5C1ZKKOUeBg==
+  dependencies:
+    apollo-env "0.5.1"
     lodash.sortby "^4.7.0"
 
 apollo-link@^1.2.3:
@@ -352,6 +369,14 @@ apollo-server-env@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/apollo-server-env/-/apollo-server-env-2.3.0.tgz#f0bf4484a6cc331a8c13763ded56e91beb16ba17"
   integrity sha512-WIwlkCM/gir0CkoYWPMTCH8uGCCKB/aM074U1bKayvkFOBVO2VgG5x2kgsfkyF05IMQq2/GOTsKhNY7RnUEhTA==
+  dependencies:
+    node-fetch "^2.1.2"
+    util.promisify "^1.0.0"
+
+apollo-server-env@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/apollo-server-env/-/apollo-server-env-2.4.0.tgz#6611556c6b627a1636eed31317d4f7ea30705872"
+  integrity sha512-7ispR68lv92viFeu5zsRUVGP+oxsVI3WeeBNniM22Cx619maBUwcYTIC3+Y3LpXILhLZCzA1FASZwusgSlyN9w==
   dependencies:
     node-fetch "^2.1.2"
     util.promisify "^1.0.0"

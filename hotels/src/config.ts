@@ -1,3 +1,3 @@
 const { env } = process;
 
-export const PORT = env.PORT;
+export const PORT = env.PORT || 4003;

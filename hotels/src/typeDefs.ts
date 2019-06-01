@@ -1,7 +1,11 @@
 import { gql } from 'apollo-server';
 
-export const Hotel = gql`
-  type Hotel {
+export const typeDefs = gql`
+  extend type Query {
+    hotels: [Hotel]
+  }
+
+  type Hotel @key(fields: "id"){
     id: Int!
     property_id: Int
     name: String

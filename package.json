@@ -6,12 +6,26 @@
   "author": "Kristy Miller <kristy@kmills.co>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently -n \"ATTRACTIONS,DINING,HOTELS\" -c \"yellow,blue,green\" \"yarn start:attractions\" \"yarn start:dining\" \"yarn start:hotels\"",
-    "start:dining": "cd dining && yarn dev",
-    "start:attractions": "cd attractions && yarn dev",
-    "start:hotels": "cd hotels && yarn dev"
+    "start:gateway": "tsc-watch --onSuccess \"node dist/index.js\"",
+    "start:service:attractions": "cd attractions && yarn dev",
+    "start:service:dining": "cd dining && yarn dev",
+    "start:service:hotels": "cd hotels && yarn dev",
+    "start:services": "concurrently -n \"ATTRACTIONS,DINING,HOTEL\" -c \"yellow,blue,green\" \"yarn start:service:attractions\" \"yarn start:service:dining\" \"yarn start:service:hotels\""
   },
   "dependencies": {
-    "concurrently": "^4.1.0"
+    "@apollo/gateway": "^0.6.1",
+    "apollo-server": "^2.6.1",
+    "concurrently": "^4.1.0",
+    "dotenv": "^8.0.0",
+    "graphql": "^14.3.1"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.2.0",
+    "@types/node": "^12.0.4",
+    "ts-node": "^8.2.0",
+    "tsc-watch": "^2.2.1",
+    "tslint": "^5.17.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.5.1"
   }
 }
