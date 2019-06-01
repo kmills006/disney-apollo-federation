@@ -1,0 +1,17 @@
+{
+  "name": "disney-apollo-federation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kmills006/disney-apollo-federation.git",
+  "author": "Kristy Miller <kristy@kmills.co>",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently -n \"ATTRACTIONS,DINING,HOTELS\" -c \"yellow,blue,green\" \"yarn start:attractions\" \"yarn start:dining\" \"yarn start:hotels\"",
+    "start:dining": "cd dining && yarn dev",
+    "start:attractions": "cd attractions && yarn dev",
+    "start:hotels": "cd hotels && yarn dev"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
