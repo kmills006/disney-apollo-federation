@@ -10,13 +10,13 @@
     "start:service:attractions": "cd attractions && yarn dev",
     "start:service:dining": "cd dining && yarn dev",
     "start:service:hotels": "cd hotels && yarn dev",
-    "start:services": "concurrently -n \"ATTRACTIONS,DINING,HOTEL\" -c \"yellow,blue,green\" \"yarn start:service:attractions\" \"yarn start:service:dining\" \"yarn start:service:hotels\""
+    "start:service:parks": "cd parks && yarn dev",
+    "start:services": "concurrently -n \"ATTRACTIONS,DINING,HOTEL,PARKS\" -c \"yellow,blue,green,cyan\" \"yarn start:service:attractions\" \"yarn start:service:dining\" \"yarn start:service:hotels\" \"yarn start:service:parks\""
   },
   "dependencies": {
     "@apollo/gateway": "^0.6.1",
     "apollo-server": "^2.6.1",
     "concurrently": "^4.1.0",
-    "dotenv": "^8.0.0",
     "graphql": "^14.3.1"
   },
   "devDependencies": {
