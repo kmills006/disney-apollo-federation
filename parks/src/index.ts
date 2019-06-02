@@ -1,6 +1,5 @@
 import { buildFederatedSchema } from '@apollo/federation';
 import { ApolloServer } from 'apollo-server';
-import 'dotenv/config';
 
 import { PORT } from './config';
 import { resolvers } from './resolvers';

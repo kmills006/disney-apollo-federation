@@ -25,7 +25,6 @@
     "apollo-datasource-rest": "^0.4.0",
     "apollo-discover-resolvers": "^1.0.2",
     "apollo-server": "^2.5.1",
-    "dotenv": "^8.0.0",
     "graphql": "^14.3.1"
   }
 }

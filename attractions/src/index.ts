@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { buildFederatedSchema } from '@apollo/federation';
 import { ApolloServer } from 'apollo-server';
 
