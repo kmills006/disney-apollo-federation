@@ -1,6 +1,6 @@
 export enum Park {
-  ANIMAL_KINGDOM = 'ANIMAL_KINGDOM',
-  EPCOT = 'EPCOT',
-  HOLLYWOOD_STUDIOS = 'HOLLYWOOD_STUDIOS',
-  MAGIC_KINGDOM = 'MAGIC_KINGDOM',
+  ANIMAL_KINGDOM = 'animal-kingdom',
+  EPCOT = 'epcot',
+  HOLLYWOOD_STUDIOS = 'hollywood-studios',
+  MAGIC_KINGDOM = 'magic-kingdom',
 }

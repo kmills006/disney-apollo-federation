@@ -4,10 +4,10 @@ export class AttractionsApi extends RESTDataSource {
   constructor() {
     super();
 
-    this.baseURL = 'http://touringplans.com/magic-kingdom';
+    this.baseURL = 'http://touringplans.com';
   }
 
-  public async getAttractions() {
-    return this.get('/attractions.json');
+  public async getAttractions(park: string = 'magic-kingdom') {
+    return this.get(`/${park}/attractions.json`);
   }
 }
