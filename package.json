@@ -14,7 +14,7 @@
     "start:services": "concurrently -n \"ATTRACTIONS,DINING,HOTEL,PARKS\" -c \"yellow,blue,green,cyan\" \"yarn start:service:attractions\" \"yarn start:service:dining\" \"yarn start:service:hotels\" \"yarn start:service:parks\""
   },
   "dependencies": {
-    "@apollo/gateway": "^0.6.1",
+    "@apollo/gateway": "^0.6.7",
     "apollo-server": "^2.6.1",
     "concurrently": "^4.1.0",
     "graphql": "^14.3.1"
