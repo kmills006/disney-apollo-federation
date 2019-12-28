@@ -1,26 +1,24 @@
-import uniqueId from 'lodash/uniqueId';
-
-import { Park } from '../typings';
+import uuid from 'uuid';
 
 export const parks = [
   {
-    id: parseInt(uniqueId(), 10),
+    id: uuid.v4(),
     name: 'Animal Kingdom',
-    permalink: Park.ANIMAL_KINGDOM,
+    permalink: 'animal-kingdom',
   },
   {
-    id: parseInt(uniqueId(), 10),
+    id: uuid.v4(),
     name: 'Epcot',
-    permalink: Park.EPCOT,
+    permalink: 'epcot',
   },
   {
-    id: parseInt(uniqueId(), 10),
+    id: uuid.v4(),
     name: 'Hollywood Studios',
-    permalink: Park.HOLLYWOOD_STUDIOS,
+    permalink: 'hollywood-studio',
   },
   {
-    id: parseInt(uniqueId(), 10),
+    id: uuid.v4(),
     name: 'Magic Kingdom',
-    permalink: Park.MAGIC_KINGDOM,
+    permalink: 'magic-kingdom',
   },
 ];

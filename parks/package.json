@@ -13,8 +13,8 @@
   },
   "devDependencies": {
     "@types/graphql": "^14.2.0",
-    "@types/lodash": "^4.14.133",
     "@types/node": "^12.0.4",
+    "@types/uuid": "^3.4.6",
     "ts-node": "^8.2.0",
     "tsc-watch": "^2.2.1",
     "tslint": "^5.17.0",
@@ -27,6 +27,6 @@
     "apollo-discover-resolvers": "^1.0.2",
     "apollo-server": "^2.5.1",
     "graphql": "^14.3.1",
-    "lodash": "^4.17.13"
+    "uuid": "^3.3.3"
   }
 }
