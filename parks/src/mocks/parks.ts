@@ -1,6 +1,8 @@
 import uuid from 'uuid';
 
-export const parks = [
+import { IPark } from '../typings';
+
+export const parks: IPark[] = [
   {
     id: uuid.v4(),
     name: 'Animal Kingdom',

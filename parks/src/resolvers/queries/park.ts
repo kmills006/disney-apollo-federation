@@ -1,12 +1,13 @@
+import { convertPermalink } from '../../helpers';
 import { mocks } from '../../mocks';
+import { IPark, StringCase } from '../../typings';
 
 interface IArg {
-  id: number;
+  permalink: string;
 }
 
-export const park = async (_: undefined, args: IArg) => {
-  const { id } = args;
+export const park = (_: undefined, args: IArg) => {
+  const permalink = convertPermalink(args.permalink, StringCase.PARAM);
 
-  // TODO: Park interface
-  return mocks.parks.find((p: any) => p.id === id);
+  return mocks.parks.find((p: IPark) => p.permalink === permalink);
 };

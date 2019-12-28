@@ -13,7 +13,7 @@ export const typeDefs = gql`
   }
 
   extend type Park @key(fields: "id") {
-    id: Int! @external
+    id: String! @external
     attractions: [Attraction]
   }
 `;
