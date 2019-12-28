@@ -2,6 +2,9 @@
   "name": "disney-apollo-federation",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "repository": "git@github.com:kmills006/disney-apollo-federation.git",
   "author": "Kristy Miller <kristy@kmills.co>",
   "license": "MIT",
