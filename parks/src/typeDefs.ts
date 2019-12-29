@@ -8,12 +8,14 @@ export const typeDefs = gql`
     ${mocks.parks.map(park => convertPermalink(park.permalink).toUpperCase()).join(' ')}
   }
 
-  extend type Query {
+  type Query {
     park(permalink: ParkPermalink!): Park
     parks: [Park]
   }
 
-  type Park @key(fields: "id") {
+  # Create a Park Entity by defining a key
+  # The key directive identifies a specific instance of the type
+  type Park @key(fields: "permalink") {
     id: String!
     name: String!
     permalink: String!

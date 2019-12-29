@@ -23,7 +23,7 @@
     "typescript": "^3.5.1"
   },
   "dependencies": {
-    "@apollo/federation": "^0.6.0",
+    "@apollo/federation": "^0.11.2",
     "apollo-datasource-rest": "^0.4.0",
     "apollo-discover-resolvers": "^1.0.2",
     "apollo-server": "^2.5.1",

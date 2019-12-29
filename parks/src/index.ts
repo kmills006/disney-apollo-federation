@@ -6,11 +6,10 @@ import { resolvers } from './resolvers';
 import { typeDefs } from './typeDefs';
 
 const startServer = async () => {
+  console.log('resolvers', resolvers);
+
   const server = new ApolloServer({
-    schema: buildFederatedSchema([{
-      resolvers,
-      typeDefs,
-    }] as any),
+    schema: buildFederatedSchema([{ resolvers, typeDefs }] as any),
   });
 
   server.listen({ port: PORT }).then(({ url }: { url: string }) => {

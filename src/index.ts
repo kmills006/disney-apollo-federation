@@ -10,6 +10,7 @@ import {
 
 const startServer = async () => {
   const gateway = new ApolloGateway({
+    debug: true,
     serviceList: [
       { name: 'attractions', url: ATTRACTIONS_SERVICE },
       { name: 'dining', url: DINING_SERVICE },

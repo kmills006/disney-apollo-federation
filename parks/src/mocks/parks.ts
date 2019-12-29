@@ -16,7 +16,7 @@ export const parks: IPark[] = [
   {
     id: uuid.v4(),
     name: 'Hollywood Studios',
-    permalink: 'hollywood-studio',
+    permalink: 'hollywood-studios',
   },
   {
     id: uuid.v4(),
