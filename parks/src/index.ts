@@ -6,8 +6,6 @@ import { resolvers } from './resolvers';
 import { typeDefs } from './typeDefs';
 
 const startServer = async () => {
-  console.log('resolvers', resolvers);
-
   const server = new ApolloServer({
     schema: buildFederatedSchema([{ resolvers, typeDefs }] as any),
   });
@@ -18,7 +16,7 @@ const startServer = async () => {
 };
 
 startServer().catch((error: Error) => {
-  console.error(`Error starting server: ${error.message}`);
+  console.error(`Error starting Parks service: ${error.message}`);
 
   process.exit(1);
 });
