@@ -11,10 +11,7 @@ const startServer = async () => {
     dataSources: () => ({
       diningApi: new DiningApi(),
     }),
-    schema: buildFederatedSchema([{
-      resolvers,
-      typeDefs,
-    }] as any),
+    schema: buildFederatedSchema([{ resolvers, typeDefs }] as any),
   });
 
   server.listen({ port: PORT }).then(({ url }: { url: string }) => {

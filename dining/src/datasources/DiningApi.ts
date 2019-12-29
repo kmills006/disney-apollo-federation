@@ -5,13 +5,13 @@ export class DiningApi extends RESTDataSource {
   constructor() {
     super();
 
-    this.baseURL = 'http://touringplans.com/magic-kingdom';
+    this.baseURL = 'http://touringplans.com';
   }
 
-  public async getRestaurants() {
+  public async getRestaurants(park: string) {
     try {
       // TODO: investigate why its a nested array
-      const results = await this.get('/dining.json');
+      const results = await this.get(`/${park}/dining.json`);
 
       return flatten(results);
     } catch (error) {
