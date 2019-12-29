@@ -5,7 +5,7 @@ export const typeDefs = gql`
     hotels: [Hotel]
   }
 
-  type Hotel @key(fields: "id"){
+  type Hotel {
     id: Int!
     property_id: Int
     name: String

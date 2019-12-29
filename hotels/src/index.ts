@@ -11,10 +11,7 @@ const startServer = async () => {
     dataSources: () => ({
       hotelsApi: new HotelsApi(),
     }),
-    schema: buildFederatedSchema([{
-      resolvers,
-      typeDefs,
-    }] as any),
+    schema: buildFederatedSchema([{ resolvers, typeDefs }] as any),
   });
 
   server.listen({ port: PORT }).then(({ url }: { url: string }) => {
