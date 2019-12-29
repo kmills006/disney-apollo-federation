@@ -22,9 +22,7 @@
   },
   "dependencies": {
     "@apollo/federation": "^0.11.2",
-    "apollo-datasource-graphql": "^1.3.2",
     "apollo-datasource-rest": "^0.4.0",
-    "apollo-discover-resolvers": "^1.0.2",
     "apollo-server": "^2.5.1",
     "graphql": "^14.3.1"
   }

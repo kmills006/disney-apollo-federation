@@ -20,7 +20,7 @@ const startServer = async () => {
 };
 
 startServer().catch((error: Error) => {
-  console.error(`Error starting server: ${error.message}`);
+  console.error(`Error starting Attraction service: ${error.message}`);
 
   process.exit(1);
 });
