@@ -14,9 +14,14 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
+  "scripts": {
+    "dev:parks": "yarn --cwd ./parks start:dev",
+    "dev": "concurrently \"yarn:dev:*\""
+  },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "concurrently": "^5.3.0",
     "husky": "^4.3.0"
   }
 }
