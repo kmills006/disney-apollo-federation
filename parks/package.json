@@ -1,0 +1,9 @@
+{
+  "name": "disney-apollo-federation-parks",
+  "version": "1.0.0",
+  "description": "GraphQL API exposing Walt Disney World Theme Park data.",
+  "main": "index.js",
+  "author": "Kristy Miller <kristy@kmills.co>",
+  "license": "MIT",
+  "private": true
+}
