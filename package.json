@@ -1,34 +1,9 @@
 {
   "name": "disney-apollo-federation",
   "version": "1.0.0",
-  "main": "index.js",
-  "engines": {
-    "node": ">=12.0.0"
-  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:kmills006/disney-apollo-federation.git",
   "author": "Kristy Miller <kristy@kmills.co>",
-  "license": "MIT",
-  "scripts": {
-    "start:gateway": "tsc-watch --onSuccess \"node dist/index.js\"",
-    "start:service:attractions": "cd attractions && yarn dev",
-    "start:service:dining": "cd dining && yarn dev",
-    "start:service:hotels": "cd hotels && yarn dev",
-    "start:service:parks": "cd parks && yarn dev",
-    "start:services": "concurrently -n \"ATTRACTIONS,DINING,HOTEL,PARKS\" -c \"yellow,blue,green,cyan\" \"yarn start:service:attractions\" \"yarn start:service:dining\" \"yarn start:service:hotels\" \"yarn start:service:parks\""
-  },
-  "dependencies": {
-    "@apollo/gateway": "^0.11.6",
-    "apollo-server": "^2.9.15",
-    "concurrently": "^4.1.0",
-    "graphql": "^14.5.8"
-  },
-  "devDependencies": {
-    "@types/graphql": "^14.5.0",
-    "@types/node": "^12.0.4",
-    "ts-node": "^8.2.0",
-    "tsc-watch": "^2.2.1",
-    "tslint": "^5.17.0",
-    "tslint-config-airbnb": "^5.11.1",
-    "typescript": "^3.5.1"
-  }
+  "license": "MIT"
 }
