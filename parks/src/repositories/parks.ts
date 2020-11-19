@@ -1,19 +1,24 @@
-import { fold } from 'fp-ts/lib/Either';
+import { fold, tryCatch, Either } from 'fp-ts/lib/Either';
 import { pipe } from 'fp-ts/lib/pipeable';
 
 import { IPark } from '@models/Park';
+import { IParkError } from '@models/ParkError';
+import { handleParkError } from '../helpers/handleParkError';
 
 // TODO: Fix module path
 import { parseJsonFile } from '../db';
 
+type IParkRepositoryError = IParkError;
+
 export interface IParkRepository {
-  getParks: () => any;
+  getParks: () => Either<IParkRepositoryError, IPark[]>;
 }
 
-export const repository = (parks: IPark[]): IParkRepository => ({
-  getParks: () => {
-    console.log('Get Parks', parks);
-  },
+export const repository = (parks: IPark[]) => (): IParkRepository => ({
+  getParks: () => tryCatch(
+    () => parks,
+    (e) => handleParkError(e as Error),
+  ),
 });
 
 const parks = pipe(
@@ -26,7 +31,5 @@ const parks = pipe(
     (p) => p,
   ),
 );
-
-console.log('parks', parks);
 
 export const parkRepository = repository(parks);

@@ -6,7 +6,8 @@
     "baseUrl": "src",
     "paths": {
       "@db/*": ["db/*"],
-      "@models/*": ["models/*"]
+      "@models/*": ["models/*"],
+      "@repositories/*": ["repositories/*"]
     }
   }
 }
