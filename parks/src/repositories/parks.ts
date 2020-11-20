@@ -38,4 +38,6 @@ const parks = pipe(
   ),
 );
 
+console.log('parks', parks);
+
 export const parkRepository = repository(parks);
