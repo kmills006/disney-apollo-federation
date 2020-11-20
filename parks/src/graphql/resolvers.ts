@@ -1,10 +1,13 @@
 import { ApolloError } from 'apollo-server';
 import { fold } from 'fp-ts/lib/Either';
 import { pipe } from 'fp-ts/lib/pipeable';
+import * as O from 'fp-ts/lib/Option';
 import { GraphQLResolveInfo } from 'graphql/type';
 
-import { IPark } from '@models/Park';
+import { IPark, NoParkFoundError } from '@models/Park';
 import { IResolverContext } from './context';
+
+type ResolveType<P, T> = (parent: P) => T | null;
 
 type ResolverFunc<R, A = {}, P = {}> = (
   parent: P,
@@ -13,15 +16,41 @@ type ResolverFunc<R, A = {}, P = {}> = (
   info: GraphQLResolveInfo
 ) => R;
 
+type ParkPayload = IPark | NoParkFoundError;
+type ParkPayloadTypeName = 'Park' | 'NoParkFoundError';
+
 interface IQueryResolvers {
   parks: ResolverFunc<IPark[]>;
+
+  park: ResolverFunc<ParkPayload, { permalink: string }>
+}
+
+interface IParkPayloadResolvers {
+  __resolveType: ResolveType<ParkPayload, ParkPayloadTypeName>;
 }
 
 interface IResolvers {
   Query: IQueryResolvers;
+  ParkPayload: IParkPayloadResolvers;
 }
 
+export const findTypeNameInParent = <T extends string, P = {}>(
+  parent: P,
+  mapping: string[][],
+): T | null => {
+  const [, typename] = mapping.find(([property]) => property in parent) || [null, null];
+
+  return typename as T;
+};
+
 export const resolvers: IResolvers = {
+  ParkPayload: {
+    __resolveType: (parent) => findTypeNameInParent<ParkPayloadTypeName>(parent, [
+      ['name', 'Park'],
+      ['message', 'NoParkFoundError'],
+    ]),
+  },
+
   Query: {
     parks: (_, __, ctx) => pipe(
       ctx.repositories.parks.getParks(),
@@ -29,6 +58,14 @@ export const resolvers: IResolvers = {
         (e) => { throw new ApolloError(e.message); },
         (parks) => parks,
       ),
+    ),
+
+    park: (_, args, ctx) => pipe(
+      ctx.repositories.parks.getParkByPermalink(args.permalink),
+      O.getOrElseW(() => ({
+        message: `Park with permalink [${args.permalink}] not found.`,
+        permalink: args.permalink,
+      })),
     ),
   },
 };

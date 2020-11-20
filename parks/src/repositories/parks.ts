@@ -1,4 +1,5 @@
 import { fold, tryCatch, Either } from 'fp-ts/lib/Either';
+import { fromNullable, Option } from 'fp-ts/lib/Option';
 import { pipe } from 'fp-ts/lib/pipeable';
 
 import { IPark } from '@models/Park';
@@ -12,12 +13,17 @@ type IParkRepositoryError = IParkError;
 
 export interface IParkRepository {
   getParks: () => Either<IParkRepositoryError, IPark[]>;
+  getParkByPermalink: (permalink: string) => Option<IPark>;
 }
 
 export const repository = (parks: IPark[]) => (): IParkRepository => ({
   getParks: () => tryCatch(
     () => parks,
     (e) => handleParkError(e as Error),
+  ),
+
+  getParkByPermalink: (permalink) => (
+    fromNullable(parks.find((p) => p.permalink === permalink))
   ),
 });
 
