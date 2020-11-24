@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`graphql server queries park returns a NoParkFoundError 1`] = `
+Object {
+  "data": Object {
+    "park": Object {
+      "message": "Park with permalink [park-one] not found.",
+      "permalink": "park-one",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`graphql server queries park returns a park by its permalink 1`] = `
+Object {
+  "data": Object {
+    "park": Object {
+      "name": "Park One",
+      "permalink": "park-one",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`graphql server queries parks returns a list of parks 1`] = `
+Object {
+  "data": Object {
+    "parks": Array [
+      Object {
+        "name": "Park One",
+        "permalink": "park-one",
+      },
+      Object {
+        "name": "Park Two",
+        "permalink": "park-two",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`graphql server queries parks returns an ApolloError 1`] = `
+Object {
+  "data": Object {
+    "parks": null,
+  },
+  "errors": Array [
+    [GraphQLError: forced error],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

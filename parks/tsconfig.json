@@ -9,5 +9,6 @@
       "@models/*": ["models/*"],
       "@repositories/*": ["repositories/*"]
     }
-  }
+  },
+  "include": ["src/**/*"]
 }

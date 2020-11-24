@@ -10,11 +10,12 @@ interface ApolloServerConfiguration<R, C> {
   typeDefs: DocumentNode;
   resolvers: R;
   context: () => C;
+  engine?: boolean;
 }
 
 export const constructApolloServer = <R = IResolvers, C = IResolverContext>(
   config: ApolloServerConfiguration<R, C>,
-) => {
+): ApolloServer => {
   const schema = buildFederatedSchema({
     resolvers: config.resolvers,
     typeDefs: config.typeDefs,
@@ -23,6 +24,7 @@ export const constructApolloServer = <R = IResolvers, C = IResolverContext>(
   return new ApolloServer({
     schema,
     context: () => config.context(),
+    engine: config.engine || false,
   });
 };
 
