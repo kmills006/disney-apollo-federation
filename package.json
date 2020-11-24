@@ -6,6 +6,13 @@
   "repository": "git@github.com:kmills006/disney-apollo-federation.git",
   "author": "Kristy Miller <kristy@kmills.co>",
   "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "services/*"
+    ]
+  },
   "commitlint": {
     "extends": "@commitlint/config-conventional"
   },
@@ -15,8 +22,8 @@
     }
   },
   "scripts": {
-    "dev:attractions": "yarn --cwd ./attractions start:dev",
-    "dev:parks": "yarn --cwd ./parks start:dev",
+    "dev:attractions": "yarn --cwd ./services/attractions start:dev",
+    "dev:parks": "yarn --cwd ./services/parks start:dev",
     "dev": "concurrently \"yarn:dev:*\""
   },
   "devDependencies": {
