@@ -1,20 +1,17 @@
 import { ApolloServer, gql } from 'apollo-server';
 import { createTestClient } from 'apollo-server-testing';
-import * as E from 'fp-ts/lib/Either';
 import * as O from 'fp-ts/lib/Option';
-import { mock, mockDeep } from 'jest-mock-extended';
+import { mockDeep } from 'jest-mock-extended';
 
 import { MOCK_PARKS } from '../../__mocks__/mockParks';
 import { resolvers } from '../../graphql/resolvers';
 import { typeDefs } from '../../graphql/typeDefs';
 import { constructApolloServer } from '../../graphql';
 import { IParkRepository } from '../../repositories/parks';
-import { IParkError } from '../../models/ParkError';
 
 describe('graphql', () => {
   describe('server', () => {
     const mockParksRepository = mockDeep<IParkRepository>();
-    const mockError = mock<IParkError>({ message: 'forced error' });
 
     let server: ApolloServer;
 
@@ -33,16 +30,7 @@ describe('graphql', () => {
         const GET_PARKS = gql`query { parks { name permalink } }`;
 
         it('returns a list of parks', async () => {
-          mockParksRepository.getParks.mockReturnValueOnce(E.right(MOCK_PARKS));
-
-          const { query } = createTestClient(server);
-          const actual = await query({ query: GET_PARKS });
-
-          expect(actual).toMatchSnapshot();
-        });
-
-        it('returns an ApolloError', async () => {
-          mockParksRepository.getParks.mockReturnValueOnce(E.left(mockError));
+          mockParksRepository.getParks.mockReturnValueOnce(MOCK_PARKS);
 
           const { query } = createTestClient(server);
           const actual = await query({ query: GET_PARKS });

@@ -59,20 +59,3 @@ Object {
   },
 }
 `;
-
-exports[`graphql server queries parks returns an ApolloError 1`] = `
-Object {
-  "data": Object {
-    "parks": null,
-  },
-  "errors": Array [
-    [GraphQLError: forced error],
-  ],
-  "extensions": undefined,
-  "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
-    },
-  },
-}
-`;

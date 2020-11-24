@@ -1,5 +1,3 @@
-import { ApolloError } from 'apollo-server';
-import { fold } from 'fp-ts/lib/Either';
 import { pipe } from 'fp-ts/lib/pipeable';
 import * as O from 'fp-ts/lib/Option';
 import { GraphQLResolveInfo } from 'graphql/type';
@@ -52,13 +50,7 @@ export const resolvers: IResolvers = {
   },
 
   Query: {
-    parks: (_, __, ctx) => pipe(
-      ctx.repositories.parks.getParks(),
-      fold(
-        (e) => { throw new ApolloError(e.message); },
-        (parks) => parks,
-      ),
-    ),
+    parks: (_, __, ctx) => ctx.repositories.parks.getParks(),
 
     park: (_, args, ctx) => pipe(
       ctx.repositories.parks.getParkByPermalink(args.permalink),
