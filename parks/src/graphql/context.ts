@@ -1,7 +1,4 @@
-import {
-  parkRepository,
-  IParkRepository,
-} from '../repositories/parks';
+import { parkRepository, IParkRepository } from '../repositories/parks';
 
 export interface IResolverContext {
   repositories: {

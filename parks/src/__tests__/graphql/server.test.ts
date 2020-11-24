@@ -7,7 +7,7 @@ import { mock, mockDeep } from 'jest-mock-extended';
 import { MOCK_PARKS } from '../../__mocks__/mockParks';
 import { resolvers } from '../../graphql/resolvers';
 import { typeDefs } from '../../graphql/typeDefs';
-import { constructApolloServer } from '../../graphql/server';
+import { constructApolloServer } from '../../graphql';
 import { IParkRepository } from '../../repositories/parks';
 import { IParkError } from '../../models/ParkError';
 
