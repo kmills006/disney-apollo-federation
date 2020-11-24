@@ -1,21 +1,39 @@
 import { buildFederatedSchema } from '@apollo/federation';
 import { ApolloServer } from 'apollo-server';
+import { DocumentNode } from 'graphql/language/ast';
 
-import { context } from './context';
-import { resolvers } from './resolvers';
+import { context, IResolverContext } from './context';
+import { resolvers, IResolvers } from './resolvers';
 import { typeDefs } from './typeDefs';
 
-const apolloServer = () => async () => {
-  const schema = buildFederatedSchema({ resolvers, typeDefs });
+interface ApolloServerConfiguration<R, C> {
+  typeDefs: DocumentNode;
+  resolvers: R;
+  context: () => C;
+}
 
-  const server = new ApolloServer({
-    schema,
-    context: () => context(),
+export const constructApolloServer = <R = IResolvers, C = IResolverContext>(
+  config: ApolloServerConfiguration<R, C>,
+) => {
+  const schema = buildFederatedSchema({
+    resolvers: config.resolvers,
+    typeDefs: config.typeDefs,
   });
 
-  server.listen(4000).then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
+  return new ApolloServer({
+    schema,
+    context: () => config.context(),
   });
 };
 
-export const startApolloServer = apolloServer();
+export const server = constructApolloServer({
+  context,
+  resolvers,
+  typeDefs,
+});
+
+export const startApolloServer = async (s: ApolloServer) => {
+  s.listen(4000).then(({ url }) => {
+    console.log(`🚀 Server ready at ${url}`);
+  });
+};

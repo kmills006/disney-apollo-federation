@@ -29,7 +29,7 @@ interface IParkPayloadResolvers {
   __resolveType: ResolveType<ParkPayload, ParkPayloadTypeName>;
 }
 
-interface IResolvers {
+export interface IResolvers {
   Query: IQueryResolvers;
   ParkPayload: IParkPayloadResolvers;
 }
