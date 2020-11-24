@@ -2,7 +2,7 @@ import { pipe } from 'fp-ts/lib/pipeable';
 import * as O from 'fp-ts/lib/Option';
 import { GraphQLResolveInfo } from 'graphql/type';
 
-import { IPark, NoParkFoundError } from '@models/Park';
+import { IPark, NoParkFoundError } from '../models/Park';
 import { IResolverContext } from './context';
 
 type ResolveType<P, T> = (parent: P) => T | null;
@@ -28,6 +28,7 @@ interface IParkPayloadResolvers {
 }
 
 export interface IResolvers {
+  [key: string]: any;
   Query: IQueryResolvers;
   ParkPayload: IParkPayloadResolvers;
 }

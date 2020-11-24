@@ -2,7 +2,7 @@ import { fold } from 'fp-ts/lib/Either';
 import { fromNullable, Option } from 'fp-ts/lib/Option';
 import { pipe } from 'fp-ts/lib/pipeable';
 
-import { IPark } from '@models/Park';
+import { IPark } from '../models/Park';
 
 // TODO: Fix module path
 import { parseJsonFile } from '../db';

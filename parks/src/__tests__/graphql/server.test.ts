@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server';
+import { buildFederatedSchema } from '@apollo/federation';
 import { createTestClient } from 'apollo-server-testing';
 import * as O from 'fp-ts/lib/Option';
 import { mockDeep } from 'jest-mock-extended';
@@ -17,8 +18,7 @@ describe('graphql', () => {
 
     beforeEach(() => {
       server = constructApolloServer({
-        resolvers,
-        typeDefs,
+        schema: buildFederatedSchema({ resolvers, typeDefs }),
         context: () => ({
           repositories: { parks: mockParksRepository },
         }),

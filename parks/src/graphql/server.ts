@@ -1,37 +1,30 @@
 import { buildFederatedSchema } from '@apollo/federation';
 import { ApolloServer } from 'apollo-server';
-import { DocumentNode } from 'graphql/language/ast';
+import { GraphQLSchema } from 'graphql';
 
 import { context, IResolverContext } from './context';
-import { resolvers, IResolvers } from './resolvers';
+import { resolvers } from './resolvers';
 import { typeDefs } from './typeDefs';
 
-interface ApolloServerConfiguration<R, C> {
-  typeDefs: DocumentNode;
-  resolvers: R;
+interface ApolloServerConfiguration<C> {
+  schema: GraphQLSchema;
   context: () => C;
   engine?: boolean;
 }
 
-export const constructApolloServer = <R = IResolvers, C = IResolverContext>(
-  config: ApolloServerConfiguration<R, C>,
-): ApolloServer => {
-  const schema = buildFederatedSchema({
-    resolvers: config.resolvers,
-    typeDefs: config.typeDefs,
-  });
-
-  return new ApolloServer({
-    schema,
-    context: () => config.context(),
-    engine: config.engine || false,
-  });
-};
+export const constructApolloServer = <C = IResolverContext>(
+  config: ApolloServerConfiguration<C>,
+): ApolloServer => (
+    new ApolloServer({
+      schema: config.schema,
+      context: () => config.context(),
+      engine: config.engine || false,
+    })
+  );
 
 export const server = constructApolloServer({
   context,
-  resolvers,
-  typeDefs,
+  schema: buildFederatedSchema([{ resolvers, typeDefs }]),
 });
 
 export const startApolloServer = async (s: ApolloServer) => {
