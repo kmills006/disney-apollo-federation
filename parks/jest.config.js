@@ -11,6 +11,11 @@ module.exports = {
   collectCoverageFrom: [
     "<rootDir>/src/**/*.ts*"
   ],
+  coveragePathIgnorePatterns: [
+    ".*__snapshots__/.*",
+    "<rootDir>/src/index.ts",
+    "<rootDir>/src/repositories/index.ts",
+  ],
   globals: {
     "ts-jest": {
       tsconfig: "<rootDir>/tsconfig.json",
