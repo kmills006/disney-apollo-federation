@@ -836,22 +836,10 @@
     "@types/koa-compose" "*"
     "@types/node" "*"
 
-"@types/lodash@*":
-  version "4.14.165"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.165.tgz#74d55d947452e2de0742bad65270433b63a8c30f"
-  integrity sha512-tjSSOTHhI5mCHTy/OOXYIhi2Wt1qcbHmuXD1Ha7q70CgI/I71afO4XtLb/cVexki1oVYchpul/TOuu3Arcdxrg==
-
 "@types/long@^4.0.0":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.1.tgz#459c65fa1867dafe6a8f322c4c51695663cc55e9"
   integrity sha512-5tXH6Bx/kNGd3MgffdmP4dy2Z+G4eaXw0SE81Tq3BNadtnMR5/ySMzX4SLEzHJzSmPNn4HIdpQsBvXMUykr58w==
-
-"@types/lowdb@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@types/lowdb/-/lowdb-1.0.9.tgz#1f6c27df72dd1c64522cc9a4566796d2dd058d38"
-  integrity sha512-LBRG5EPXFOJDoJc9jACstMhtMP+u+UkPYllBeGQXXKiaHc+uzJs9+/Aynb/5KkX33DtrIiKyzNVTPQc/4RcD6A==
-  dependencies:
-    "@types/lodash" "*"
 
 "@types/mime@*":
   version "2.0.3"
