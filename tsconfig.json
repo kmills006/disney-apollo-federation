@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "exclude": ["packages/**/*", "services/**/*"],
+  "references": [
+    {
+      "path": "packages/gql-utils"
+    },
+    {
+      "path": "services/attractions"
+    },
+    {
+      "path": "services/parks"
+    }
+  ]
+}
