@@ -15,6 +15,7 @@
     }
   },
   "scripts": {
+    "dev:attractions": "yarn --cwd ./attractions start:dev",
     "dev:parks": "yarn --cwd ./parks start:dev",
     "dev": "concurrently \"yarn:dev:*\""
   },
