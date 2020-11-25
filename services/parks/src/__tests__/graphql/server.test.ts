@@ -1,5 +1,6 @@
-import { ApolloServer, gql } from 'apollo-server';
 import { buildFederatedSchema } from '@apollo/federation';
+import { constructApolloServer } from '@disney-federation/gql-utils';
+import { ApolloServer, gql } from 'apollo-server';
 import { createTestClient } from 'apollo-server-testing';
 import * as O from 'fp-ts/lib/Option';
 import { mockDeep } from 'jest-mock-extended';
@@ -7,7 +8,6 @@ import { mockDeep } from 'jest-mock-extended';
 import { MOCK_PARKS } from '../../__mocks__/mockParks';
 import { resolvers } from '../../graphql/resolvers';
 import { typeDefs } from '../../graphql/typeDefs';
-import { constructApolloServer } from '../../graphql';
 import { IParkRepository } from '../../repositories/parks';
 
 describe('graphql', () => {

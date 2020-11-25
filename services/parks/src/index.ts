@@ -1,6 +1,8 @@
-import { server, startApolloServer } from './graphql/server';
+import { startApolloServer } from '@disney-federation/gql-utils';
 
-startApolloServer(server).catch((error) => {
+import { server } from './graphql/server';
+
+startApolloServer(4000)(server).catch((error) => {
   console.error(`Unable to start Parks server: ${error.message}`);
   process.exit(1);
 });
