@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@apollo/federation": "^0.20.4",
+    "@disney-federation/gql-utils": "^1.0.0",
     "apollo-server": "^2.19.0",
     "fp-ts": "^2.8.6",
     "graphql": "^15.4.0"
