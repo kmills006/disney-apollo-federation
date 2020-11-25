@@ -9,7 +9,7 @@ export type GraphQLMiddlewareFn = (
   info: GraphQLResolveInfo,
 ) => Promise<unknown>;
 
-export const createOperationHash = () => crypto.randomBytes(6).toString('hex');
+export const createOperationHash = (size = 6) => crypto.randomBytes(size).toString('hex');
 
 export const logResolverTime: GraphQLMiddlewareFn = async (
   resolve,
