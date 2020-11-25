@@ -8,6 +8,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist/",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "lint": "eslint . --ext .ts",
     "postinstall": "yarn build",
     "prebuild": "yarn clean",
@@ -33,6 +34,8 @@
   "dependencies": {
     "@apollo/federation": "^0.20.4",
     "apollo-server": "^2.19.0",
-    "graphql": "^15.4.0"
+    "crypto": "^1.0.1",
+    "graphql": "^15.4.0",
+    "graphql-middleware": "^4.0.2"
   }
 }

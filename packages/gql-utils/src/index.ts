@@ -1,5 +1,8 @@
 import { ApolloServer } from 'apollo-server';
 import { GraphQLSchema } from 'graphql';
+import { applyMiddleware } from 'graphql-middleware';
+
+import { logResolverTime } from './middleware';
 
 export interface IApolloServerConfiguration<C> {
   schema: GraphQLSchema;
@@ -11,7 +14,7 @@ export const constructApolloServer = <C = {}>(
   config: IApolloServerConfiguration<C>,
 ): ApolloServer => (
     new ApolloServer({
-      schema: config.schema,
+      schema: applyMiddleware(config.schema, logResolverTime),
       context: () => config.context(),
       engine: config.engine || false,
     })
