@@ -1,16 +1,9 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import { InMemoryLRUCache } from 'apollo-server-caching';
 
-export enum ParkPermalink {
-  MagicKingdom = 'magic-kingdom',
-  Epcot = 'epcot',
-  AnimalKingdom = 'animal-kingdom',
-  HollywoodStudios = 'hollywood-studios',
-}
+import { ParkPermalink } from '../types';
 
 export class AttractionAPI extends RESTDataSource {
-  private endpoint = 'attractions.json';
-
   constructor() {
     super();
 
@@ -18,13 +11,10 @@ export class AttractionAPI extends RESTDataSource {
 
     // Required in order to use the RESTDatasource without passing it
     // to an ApolloServer
-    const cache = new InMemoryLRUCache();
-    this.initialize({ context: {}, cache });
+    this.initialize({ cache: new InMemoryLRUCache(), context: {} });
   }
 
   public async getAttractions(park: ParkPermalink) {
-    console.log('parkPermalinks', park);
-
-    return this.get(`${park}/${this.endpoint}`);
+    return this.get(`${park}/attractions.json`);
   }
 }

@@ -6,7 +6,7 @@ import * as P from 'fp-ts/lib/pipeable';
 
 import { IResolverContext } from './context';
 import { IAttraction } from '../models/Attraction';
-import { ParkPermalink } from './datasource';
+import { ParkPermalink } from '../types';
 
 export interface IQueryResolvers {
   attractions: ResolverFunc<Promise<IAttraction[]>, IResolverContext>;
