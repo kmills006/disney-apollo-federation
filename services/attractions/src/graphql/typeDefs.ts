@@ -5,14 +5,14 @@ export const typeDefs = gql`
     attractions: [Attraction!]
   }
 
-  type Attraction {
+  type Attraction @key(fields: "permalink") {
     name: String!
-    park: Park!
-    shortName: String!
     permalink: String!
   }
 
   extend type Park @key(fields: "permalink") {
     permalink: String! @external
+
+    attractions: [Attraction!]
   }
 `;
