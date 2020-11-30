@@ -2262,6 +2262,17 @@ apollo-cache-control@^0.11.4:
     apollo-server-env "^2.4.5"
     apollo-server-plugin-base "^0.10.2"
 
+apollo-datasource-rest@^0.9.5:
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/apollo-datasource-rest/-/apollo-datasource-rest-0.9.5.tgz#38febbf23ad2d427c40c79a59ade5766cabba16b"
+  integrity sha512-/rtuQETxRIj6aQK1sVgSX9Nq4GkfdXT7sTaqdduc/EbmFIGs8xIZZh/QjFQ2HOqFrP7Qfno+eyK1lRChy6ILDA==
+  dependencies:
+    apollo-datasource "^0.7.2"
+    apollo-server-caching "^0.5.2"
+    apollo-server-env "^2.4.5"
+    apollo-server-errors "^2.4.2"
+    http-cache-semantics "^4.0.0"
+
 apollo-datasource@^0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/apollo-datasource/-/apollo-datasource-0.7.2.tgz#1662ee93453a9b89af6f73ce561bde46b41ebf31"
