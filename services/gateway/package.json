@@ -1,0 +1,43 @@
+{
+  "name": "disney-apollo-federation-gateway",
+  "version": "1.0.0",
+  "description": "GraphQL API exposing Walt Disney World Theme Park Attraction data.",
+  "main": "index.js",
+  "author": "Kristy Miller <kristy@kmills.co>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist/",
+    "lint": "eslint . --ext .ts",
+    "postinstall": "yarn build",
+    "prestart:dev": "yarn clean",
+    "prebuild": "yarn clean",
+    "start:dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.7",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "apollo-server-testing": "^2.19.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3",
+    "jest-mock-extended": "^1.0.10",
+    "nodemon": "^2.0.6",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "@apollo/gateway": "^0.21.3",
+    "@disney-federation/gql-utils": "^1.0.0",
+    "apollo-server": "^2.19.0",
+    "graphql": "^15.4.0"
+  }
+}
