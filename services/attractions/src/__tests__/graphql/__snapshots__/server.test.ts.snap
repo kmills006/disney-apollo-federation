@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`graphql server queries attractions returns a list of attractions 1`] = `
+Object {
+  "data": Object {
+    "attractions": Array [
+      Object {
+        "name": "Attraction One",
+        "permalink": "attraction-one",
+      },
+      Object {
+        "name": "Attraction Two",
+        "permalink": "attraction-two",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`graphql server queries attractions throws an ApolloError 1`] = `
+Object {
+  "data": Object {
+    "attractions": null,
+  },
+  "errors": Array [
+    [GraphQLError: forced error],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
