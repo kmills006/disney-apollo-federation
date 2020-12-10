@@ -23,7 +23,8 @@
   },
   "scripts": {
     "dev:attractions": "yarn --cwd ./services/attractions start:dev",
-    "dev:gateway": "wait-on tcp:4000 && wait-on tcp:4001 && yarn --cwd ./services/gateway start:dev",
+    "dev:restaurants": "yarn --cwd ./services/restaurants start:dev",
+    "dev:gateway": "wait-on tcp:4000 && wait-on tcp:4001 && wait-on tcp:4002 && yarn --cwd ./services/gateway start:dev",
     "dev:parks": "yarn --cwd ./services/parks start:dev",
     "dev": "concurrently \"yarn:dev:*\""
   },

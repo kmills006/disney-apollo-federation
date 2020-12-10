@@ -6,6 +6,7 @@ const gateway = new ApolloGateway({
   serviceList: [
     { name: 'parks', url: 'http://localhost:4000' },
     { name: 'attractions', url: 'http://localhost:4001' },
+    { name: 'restaurants', url: 'http://localhost:4002' },
   ],
 });
 
