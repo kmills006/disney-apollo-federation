@@ -2,7 +2,7 @@ import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Query {
-    parks: [Park!]
+    parks: [Park!]!
 
     park(permalink: String!): ParkPayload!
   }
