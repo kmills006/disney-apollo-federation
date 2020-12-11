@@ -1,34 +1,54 @@
-import { fold } from 'fp-ts/lib/Either';
-import { fromNullable, Option } from 'fp-ts/lib/Option';
-import { pipe } from 'fp-ts/lib/pipeable';
+import * as A from 'fp-ts/lib/Array';
+import * as O from 'fp-ts/lib/Option';
+import * as P from 'fp-ts/lib/pipeable';
 
-import { IPark } from '../models/Park';
-
-// TODO: Fix module path
 import { parseJsonFile } from '../db';
+import {
+  IPark,
+  ParkId,
+  ParkPermalink,
+  RawPark,
+} from '../models/Park';
+
+const parkIdToPermalinkMap: Record<ParkId, ParkPermalink> = {
+  [ParkId.ANIMAL_KINGDOM]: 'animal-kingdom',
+  [ParkId.EPCOT]: 'epcot',
+  [ParkId.HOLLYWOOD_STUDIOS]: 'hollywood-studios',
+  [ParkId.MAGIC_KINGDOM]: 'magic-kingdom',
+};
 
 export interface IParkRepository {
   getParks: () => IPark[];
-  getParkByPermalink: (permalink: string) => Option<IPark>;
+  getParkByPermalink: (id: ParkId) => O.Option<IPark>;
 }
 
 export const repository = (parks: IPark[]) => (): IParkRepository => ({
   getParks: () => parks,
-
-  getParkByPermalink: (permalink) => (
-    fromNullable(parks.find((p) => p.permalink === permalink))
+  getParkByPermalink: (id) => (
+    O.fromNullable(parks.find((p) => p.permalink === parkIdToPermalinkMap[id]))
   ),
 });
 
-const parks = pipe(
-  parseJsonFile<IPark[]>('src/db/parks.json'),
-  fold(
-    (e) => {
-      console.warn(`Unable to parse parks.json: ${e.message}`);
-      return [];
-    },
-    (p) => p,
-  ),
+/// // Move out of here
+const addIdToParkRecord = (park: RawPark): O.Option<IPark> => {
+  const id = (Object.keys(parkIdToPermalinkMap) as ParkId[])
+    .find((key) => parkIdToPermalinkMap[key] === park.permalink as ParkPermalink);
+
+  return !id ? O.none : O.some({ id, ...park });
+};
+
+const addParkIds = (parks: RawPark[]): O.Option<IPark[]> => P.pipe(
+  parks.map(addIdToParkRecord),
+  A.filter(O.isSome),
+  A.array.sequence(O.option),
+);
+/// // Move out of here
+
+const parks = P.pipe(
+  parseJsonFile<RawPark[]>('src/db/parks.json'),
+  O.fromEither,
+  O.chain(addParkIds),
+  O.fold(() => [], (p) => p),
 );
 
 export const parkRepository = repository(parks);

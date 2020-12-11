@@ -3,8 +3,7 @@ import { gql } from 'apollo-server';
 export const typeDefs = gql`
   type Query {
     parks: [Park!]!
-
-    park(permalink: String!): ParkPayload!
+    park(id: ParkId!): ParkPayload!
   }
 
   interface Error {
@@ -13,16 +12,20 @@ export const typeDefs = gql`
 
   type NoParkFoundError implements Error {
     message: String!
-    permalink: String!
   }
 
   union ParkPayload = Park | NoParkFoundError
 
   type Park @key(fields: "permalink") {
-    "Walt Disney World Park name"
+    id: ParkId!
     name: String!
-
-    "Unchanged URL for the park."
     permalink: String!
+  }
+
+  enum ParkId {
+    ANIMAL_KINGDOM
+    EPCOT
+    HOLLYWOOD_STUDIOS
+    MAGIC_KINGDOM
   }
 `;

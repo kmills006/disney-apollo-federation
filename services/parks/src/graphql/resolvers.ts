@@ -1,26 +1,20 @@
-import { pipe } from 'fp-ts/lib/pipeable';
 import * as O from 'fp-ts/lib/Option';
-import { GraphQLResolveInfo } from 'graphql/type';
+import * as P from 'fp-ts/lib/pipeable';
+import { ResolverFunc, ResolveType } from '@disney-federation/gql-utils';
 
-import { IPark, NoParkFoundError } from '../models/Park';
+import { IPark, ParkId } from '../models/Park';
+import { IParkError } from '../models/ParkError';
 import { IResolverContext } from './context';
 
-type ResolveType<P, T> = (parent: P) => T | null;
-
-type ResolverFunc<R, A = {}, P = {}> = (
-  parent: P,
-  args: A,
-  ctx: IResolverContext,
-  info: GraphQLResolveInfo
-) => R;
+type IGraphQLError = Pick<IParkError, 'message'>;
+type NoParkFoundError = IGraphQLError;
 
 type ParkPayload = IPark | NoParkFoundError;
 type ParkPayloadTypeName = 'Park' | 'NoParkFoundError';
 
 interface IQueryResolvers {
-  parks: ResolverFunc<IPark[]>;
-
-  park: ResolverFunc<ParkPayload, { permalink: string }>
+  parks: ResolverFunc<IPark[], IResolverContext>;
+  park: ResolverFunc<ParkPayload, IResolverContext, { id: ParkId }>
 }
 
 interface IParkPayloadResolvers {
@@ -28,7 +22,7 @@ interface IParkPayloadResolvers {
 }
 
 export interface IResolvers {
-  [key: string]: any;
+  [key: string]: {};
   Query: IQueryResolvers;
   ParkPayload: IParkPayloadResolvers;
 }
@@ -49,15 +43,12 @@ export const resolvers: IResolvers = {
       ['message', 'NoParkFoundError'],
     ]),
   },
-
   Query: {
     parks: (_, __, ctx) => ctx.repositories.parks.getParks(),
-
-    park: (_, args, ctx) => pipe(
-      ctx.repositories.parks.getParkByPermalink(args.permalink),
+    park: (_, args, ctx) => P.pipe(
+      ctx.repositories.parks.getParkByPermalink(args.id),
       O.getOrElseW(() => ({
-        message: `Park with permalink [${args.permalink}] not found.`,
-        permalink: args.permalink,
+        message: `Park with id [${args.id}] not found.`,
       })),
     ),
   },

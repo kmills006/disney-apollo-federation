@@ -1,6 +1,7 @@
 import * as O from 'fp-ts/lib/Option';
 
-import { MOCK_PARKS } from '../../__mocks__/mockParks';
+import { MOCK_PARKS } from '../../__mocks__';
+import { ParkId } from '../../models/Park';
 import { repository } from '../../repositories/parks';
 
 describe('respositories', () => {
@@ -15,18 +16,16 @@ describe('respositories', () => {
     });
 
     describe('getParkByPermalink', () => {
-      const mockPark = MOCK_PARKS[Math.floor(Math.random() * MOCK_PARKS.length)];
-
       it('returns right with a park by its permalink', () => {
         const systemUnderTest = repository(MOCK_PARKS)();
-        const actual = systemUnderTest.getParkByPermalink(mockPark.permalink);
+        const actual = systemUnderTest.getParkByPermalink(ParkId.MAGIC_KINGDOM);
 
         expect(O.isSome(actual)).toBeTruthy();
       });
 
       it('returns left when permalink doesnt match a park', () => {
         const systemUnderTest = repository(MOCK_PARKS)();
-        const actual = systemUnderTest.getParkByPermalink('test-permalink');
+        const actual = systemUnderTest.getParkByPermalink(ParkId.MAGIC_KINGDOM);
 
         expect(O.isSome(actual)).toBeFalsy();
       });
