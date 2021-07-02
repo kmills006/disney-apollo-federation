@@ -1,0 +1,16 @@
+{
+  "name": "parks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec 'ts-node -r tsconfig-paths/register' src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^15.14.0",
+    "nodemon": "^2.0.9",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.3.5"
+  }
+}

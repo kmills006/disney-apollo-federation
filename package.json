@@ -1,14 +1,18 @@
 {
   "name": "disney-apollo-federation",
+  "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
+  "workspaces": [
+    "services/parks"
+  ],
   "repository": "git@github.com:kmills006/disney-apollo-federation.git",
   "author": "Kristy Miller <kristy@kmills.co>",
   "license": "MIT",
-  "scripts": { },
+  "scripts": {},
   "dependencies": {},
   "devDependencies": {}
 }
