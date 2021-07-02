@@ -13,11 +13,16 @@
   "author": "Kristy Miller <kristy@kmills.co>",
   "license": "MIT",
   "scripts": {
+    "lint": "yarn workspaces run lint",
     "start:service:parks": "yarn --cwd ./services/parks dev",
-    "start": "concurrently -n \"PARKS\" -c \"cyan\" \"yarn start:service:parks\""
+    "start": "concurrently -n \"PARKS\" -c \"cyan\" \"yarn start:service:parks\"",
+    "prepare": "husky install"
   },
   "dependencies": {},
   "devDependencies": {
-    "concurrently": "^6.2.0"
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "concurrently": "^6.2.0",
+    "husky": "^7.0.0"
   }
 }
