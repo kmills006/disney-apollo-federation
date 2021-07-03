@@ -1,10 +1,24 @@
-import { pipe } from 'fp-ts/function';
-import { map } from 'fp-ts/Either';
+import { fold, map } from 'fp-ts/Either';
+import { identity, pipe } from 'fp-ts/function';
 
 import { db } from './db';
 import { Park } from './model';
 import { parkRepository } from './repository';
+import { initiateApolloServer } from './graphql/server';
 
-const ops = pipe(db<Park[]>('src/parks.json'), map(parkRepository));
+// TODO: Don't hard code the port in real life.
+const PORT = 4001;
 
-console.log('ops', ops);
+const server = pipe(
+  db<Park[]>('src/parks.json'),
+  map(parkRepository),
+  map((repository) => initiateApolloServer(repository)),
+  fold((err) => {
+    console.error(`Unable to initiate Apollo Server: ${err.message}`);
+    process.exit(1);
+  }, identity),
+);
+
+server
+  .listen(PORT)
+  .then(() => console.log(`Parks GraphQL API running on port ${PORT}`));
