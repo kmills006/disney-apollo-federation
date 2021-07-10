@@ -1,5 +1,5 @@
-import { fold, map } from 'fp-ts/Either';
-import { identity, pipe } from 'fp-ts/function';
+import { getOrElseW, map } from 'fp-ts/Either';
+import { pipe } from 'fp-ts/function';
 
 import { db } from './db';
 import { Park } from './model';
@@ -13,10 +13,10 @@ const server = pipe(
   db<Park[]>('src/parks.json'),
   map(parkRepository),
   map((repository) => initiateApolloServer(repository)),
-  fold((err) => {
+  getOrElseW((err) => {
     console.error(`Unable to initiate Apollo Server: ${err.message}`);
     process.exit(1);
-  }, identity),
+  }),
 );
 
 server

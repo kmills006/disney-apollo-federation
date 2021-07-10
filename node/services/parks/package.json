@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@apollo/federation": "^0.25.2",
+    "apollo-graphql": "^0.9.3",
     "apollo-server": "^2.25.2",
     "fp-ts": "^2.10.5",
     "fs": "^0.0.1-security",

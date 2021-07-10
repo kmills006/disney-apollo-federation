@@ -6,6 +6,13 @@ export const typeDefs = gql`
     name: String!
   }
 
+  enum ParkPermalink {
+    ANIMAL_KINGDOM
+    EPCOT
+    HOLLYWOOD_STUDIOS
+    MAGIC_KINGDOM
+  }
+
   type NoParkFoundError {
     message: String!
     code: ParkErrorCode!
@@ -19,6 +26,6 @@ export const typeDefs = gql`
 
   type Query {
     parks: [Park!]!
-    parkByPermalink: ParkByPermalinkResponse!
+    parkByPermalink(permalink: ParkPermalink!): ParkByPermalinkResponse!
   }
 `;
