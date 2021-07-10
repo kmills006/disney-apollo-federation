@@ -1,1 +1,8 @@
+.DS_STORE
+.env
+
+# Node
+node_modules
 .eslintcache
+.nvmrc
+dist/
