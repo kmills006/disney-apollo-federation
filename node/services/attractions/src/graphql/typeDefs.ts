@@ -3,7 +3,7 @@ import { gql } from 'apollo-server';
 export const typeDefs = gql`
   type Attraction @key(fields: "permalink") {
     name: String!
-    permalink: String!
+    permalink: ID!
     detail: AttractionDetail!
     park: Park
   }
@@ -42,7 +42,7 @@ export const typeDefs = gql`
   }
 
   extend type Park @key(fields: "permalink") {
-    permalink: String! @external
+    permalink: ID! @external
     attractions: [Attraction!]
   }
 `;
