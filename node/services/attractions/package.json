@@ -25,6 +25,7 @@
     "apollo-datasource-rest": "^0.14.0",
     "apollo-graphql": "^0.9.3",
     "apollo-server": "^2.25.2",
+    "camelcase-keys": "^7.0.0",
     "fp-ts": "^2.10.5",
     "graphql": "^15.5.1",
     "type-fest": "^1.2.2"

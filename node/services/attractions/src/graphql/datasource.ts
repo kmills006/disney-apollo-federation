@@ -1,7 +1,7 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import * as TE from 'fp-ts/lib/TaskEither';
 
-import { AttractionRaw, AttractionDetailRaw } from '../model';
+import { AttractionRaw, AttractionDetailRaw, ParkPermalink } from '../model';
 
 // type GetAttractionDetailsArgs = {
 //   parkPermalink: ParkPermalink;
@@ -15,14 +15,13 @@ export class AttractionAPI extends RESTDataSource {
     this.baseURL = 'https://touringplans.com/';
   }
 
-  public getAttractions(
-    parkPermalink: any,
-  ): TE.TaskEither<Error, AttractionRaw[]> {
-    return TE.tryCatch(
+  public getAttractions = (
+    parkPermalink: ParkPermalink,
+  ): TE.TaskEither<Error, AttractionRaw[]> =>
+    TE.tryCatch(
       () => this.get(`${parkPermalink}/attractions.json`),
       (reason) => reason as Error,
-    );
-  }
+    )
 
   public getAttractionDetails(
     args: any,
