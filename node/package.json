@@ -1,0 +1,22 @@
+{
+  "name": "disney-apollo-federation-node",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "services/attractions",
+    "services/parks"
+  ],
+  "repository": "git@github.com:kmills006/disney-apollo-federation.git",
+  "author": "Kristy Miller <kristy@kmills.co>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "yarn workspaces run lint",
+    "start:service:attractions": "yarn --cwd ./services/attractions dev",
+    "start:service:parks": "yarn --cwd ./services/parks dev",
+    "dev": "concurrently \"yarn:start:*\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
