@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "workspaces": [
+    "services/attractions",
     "services/parks"
   ],
   "repository": "git@github.com:kmills006/disney-apollo-federation.git",
@@ -10,8 +11,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "yarn workspaces run lint",
+    "start:service:attractions": "yarn --cwd ./services/attractions dev",
     "start:service:parks": "yarn --cwd ./services/parks dev",
-    "start": "concurrently -n \"PARKS\" -c \"cyan\" \"yarn start:service:parks\""
+    "dev": "concurrently \"yarn:start:*\""
   },
   "dependencies": {},
   "devDependencies": {
