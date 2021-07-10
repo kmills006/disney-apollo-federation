@@ -5,7 +5,7 @@ export const typeDefs = gql`
     name: String!
     permalink: ID!
     detail: AttractionDetail!
-    park: Park
+    park: Park!
   }
 
   type AttractionDetail {
@@ -43,6 +43,6 @@ export const typeDefs = gql`
 
   extend type Park @key(fields: "permalink") {
     permalink: ID! @external
-    attractions: [Attraction!]
+    attractions: [Attraction!] @requires(fields: "permalink")
   }
 `;

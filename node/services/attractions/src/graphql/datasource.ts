@@ -3,11 +3,6 @@ import * as TE from 'fp-ts/lib/TaskEither';
 
 import { AttractionRaw, AttractionDetailRaw, ParkPermalink } from '../model';
 
-// type GetAttractionDetailsArgs = {
-//   parkPermalink: ParkPermalink;
-//   permalink: string;
-// };
-
 export class AttractionAPI extends RESTDataSource {
   constructor() {
     super();
@@ -23,12 +18,12 @@ export class AttractionAPI extends RESTDataSource {
       (reason) => reason as Error,
     )
 
-  public getAttractionDetails(
-    args: any,
-  ): TE.TaskEither<Error, AttractionDetailRaw> {
-    return TE.tryCatch(
-      () => this.get(`${args.parkPermalink}/attractions/${args.permalink}.json`),
+  public getAttractionDetails = (
+    parkPermalink: ParkPermalink,
+    attractionPermalink: string,
+  ): TE.TaskEither<Error, AttractionDetailRaw> =>
+    TE.tryCatch(
+      () => this.get(`${parkPermalink}/attractions/${attractionPermalink}.json`),
       (reason) => reason as Error,
     );
-  }
 }

@@ -1,14 +1,34 @@
 import camelcaseKeys from 'camelcase-keys';
 
-import { Attraction, AttractionRaw } from './model';
+import {
+  Attraction,
+  AttractionDetail,
+  AttractionDetailRaw,
+  AttractionRaw,
+} from './model';
 
 export type AttractionAdaptor = {
-  toGql: (a: AttractionRaw) => Attraction;
+  attraction: {
+    toGql: <P>(parent: P) => (a: AttractionRaw) => Attraction;
+  },
+  attractionDetail: {
+    toGql: (a: AttractionDetailRaw) => AttractionDetail;
+  },
 };
 
 export const attractionAdaptor = (): AttractionAdaptor => ({
-  toGql: (a) => ({
-    ...camelcaseKeys(a),
-    __typename: 'Attraction',
-  }),
+  attraction: {
+    toGql: (p) => (a) => ({
+      ...camelcaseKeys(a),
+      park: p,
+      __typename: 'Attraction',
+    }),
+  },
+
+  attractionDetail: {
+    toGql: (a) => ({
+      ...camelcaseKeys(a),
+      __typename: 'AttractionDetail',
+    }),
+  },
 });
