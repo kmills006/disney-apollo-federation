@@ -1,11 +1,7 @@
 {
-  "name": "disney-apollo-federation",
+  "name": "disney-apollo-federation-node",
   "private": true,
   "version": "1.0.0",
-  "main": "index.js",
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "workspaces": [
     "services/parks"
   ],
@@ -15,14 +11,10 @@
   "scripts": {
     "lint": "yarn workspaces run lint",
     "start:service:parks": "yarn --cwd ./services/parks dev",
-    "start": "concurrently -n \"PARKS\" -c \"cyan\" \"yarn start:service:parks\"",
-    "prepare": "husky install"
+    "start": "concurrently -n \"PARKS\" -c \"cyan\" \"yarn start:service:parks\""
   },
   "dependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "concurrently": "^6.2.0",
-    "husky": "^7.0.0"
+    "concurrently": "^6.2.0"
   }
 }
