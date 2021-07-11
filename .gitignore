@@ -2,7 +2,28 @@
 .env
 
 # Node
-node_modules
-.eslintcache
-.nvmrc
-dist/
+**/node_modules
+**/.eslintcache
+**/.nvmrc
+**/dist/
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+**/db.sqlite3
+media
+
+# Backup files
+*.bak
+
+# Python
+*.py[cod]
+*$py.class
+
+# Installer logs
+python/pip-log.txt
+
+# Python env
+python/env
