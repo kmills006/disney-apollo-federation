@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+
+  attractions:
+    build:
+      context: ./services/attractions
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./services/attractions/src:/attractions/app/src
+      - ./services/attractions/nodemon.json:/attractions/app/nodemon.json
+    container_name: attractions
+    expose:
+      - 4001
+    ports:
+      - '4001:4001'
+    environment:
+      - PORT=4001
+    command: yarn run dev
+  
+  parks:
+    build:
+      context: ./services/parks
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./services/parks/src:/parks/app/src
+      - ./services/parks/nodemon.json:/parks/app/nodemon.json
+    container_name: parks
+    expose:
+      - 4002
+    ports:
+      - 4002:4002
+    environment:
+      - PORT=4002
+    command: yarn run dev

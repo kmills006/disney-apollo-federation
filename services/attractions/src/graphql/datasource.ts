@@ -16,14 +16,15 @@ export class AttractionAPI extends RESTDataSource {
     TE.tryCatch(
       () => this.get(`${parkPermalink}/attractions.json`),
       (reason) => reason as Error,
-    )
+    );
 
   public getAttractionDetails = (
     parkPermalink: ParkPermalink,
     attractionPermalink: string,
   ): TE.TaskEither<Error, AttractionDetailRaw> =>
     TE.tryCatch(
-      () => this.get(`${parkPermalink}/attractions/${attractionPermalink}.json`),
+      () =>
+        this.get(`${parkPermalink}/attractions/${attractionPermalink}.json`),
       (reason) => reason as Error,
     );
 }

@@ -6,8 +6,7 @@ import { Park } from './model';
 import { parkRepository } from './repository';
 import { initiateApolloServer } from './graphql/server';
 
-// TODO: Don't hard code the port in real life.
-const PORT = 4001;
+const PORT = process.env.PORT || 4001;
 
 const server = pipe(
   db<Park[]>('src/parks.json'),
@@ -21,4 +20,4 @@ const server = pipe(
 
 server
   .listen(PORT)
-  .then(() => console.log(`Parks GraphQL API running on port ${PORT}`));
+  .then(() => console.log(`Parks GraphQL running on port ${PORT}`));

@@ -38,11 +38,21 @@ $ yarn install
 $ yarn dev
 ```
 
+### Running With Docker (Services)
+#### In Development:
+```
+$ docker compose build
+$ docker compose up
+$ cd gql-gateway
+$ yarn install
+$ yarn dev
+```
+
 ### TODO
 
 - [ ] Python backend
 - [ ] Frontend
-- [ ] Docker Compose to run all the things
+- [x] Docker Compose to run all the things
 - [ ] Scala backend
 - [ ] Node tests
 
