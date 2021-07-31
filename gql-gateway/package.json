@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "wait-on tcp:4001 && wait-on tcp:4002 && nodemon",
+    "dev": "wait-on tcp:4001 && wait-on tcp:4002 && nodemon --exec 'ts-node -r tsconfig-paths/register' src/index.ts",
     "lint": "eslint --ext .ts src --quiet --cache"
   },
   "devDependencies": {

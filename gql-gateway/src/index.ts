@@ -4,8 +4,8 @@ import { ApolloGateway } from '@apollo/gateway';
 const gateway = new ApolloGateway({
   experimental_pollInterval: 10000,
   serviceList: [
-    { name: 'parks', url: 'http://localhost:4001' },
-    { name: 'attractions', url: 'http://localhost:4002' },
+    { name: 'attractions', url: 'http://localhost:4001' },
+    { name: 'parks', url: 'http://localhost:4002' },
   ],
 });
 
