@@ -13,7 +13,7 @@ services:
     expose:
       - 4001
     ports:
-      - '4001:4001'
+      - 4001:4001
     environment:
       - PORT=4001
     command: yarn run dev

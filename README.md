@@ -48,11 +48,20 @@ $ yarn install
 $ yarn dev
 ```
 
+#### In Production:
+```
+$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
+$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+$ cd gql-gateway
+$ yarn install
+$ yarn dev
+```
+
 ### TODO
 
 - [ ] Python backend
 - [ ] Frontend
-- [x] Docker Compose to run all the things
+- [ ] Dockerize `gql-gateway`
 - [ ] Scala backend
 - [ ] Node tests
 
