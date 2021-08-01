@@ -15,7 +15,7 @@ services:
     environment:
       - PORT=80
     command: yarn run dev
-  
+
   parks:
     build:
       context: ./services/parks
@@ -30,7 +30,7 @@ services:
     environment:
       - PORT=80
     command: yarn run dev
-  
+
   gql-gateway:
     build:
       context: ./gql-gateway
@@ -48,4 +48,11 @@ services:
     depends_on:
       - attractions
       - parks
-    command: yarn run dev
+    command: [
+      "/wait-for-it.sh",
+      "http://attractions",
+      "http://parks",
+      "--",
+      "yarn",
+      "dev"
+    ]
