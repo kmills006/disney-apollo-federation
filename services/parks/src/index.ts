@@ -6,7 +6,7 @@ import { Park } from './model';
 import { parkRepository } from './repository';
 import { initiateApolloServer } from './graphql/server';
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4002;
 
 const server = pipe(
   db<Park[]>('src/parks.json'),

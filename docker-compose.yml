@@ -10,12 +10,10 @@ services:
       - ./services/attractions/src:/attractions/app/src
       - ./services/attractions/nodemon.json:/attractions/app/nodemon.json
     container_name: attractions
-    expose:
-      - 4001
     ports:
-      - 4001:4001
+      - 4001:80
     environment:
-      - PORT=4001
+      - PORT=80
     command: yarn run dev
   
   parks:
@@ -27,10 +25,27 @@ services:
       - ./services/parks/src:/parks/app/src
       - ./services/parks/nodemon.json:/parks/app/nodemon.json
     container_name: parks
-    expose:
-      - 4002
     ports:
-      - 4002:4002
+      - 4002:80
     environment:
-      - PORT=4002
+      - PORT=80
+    command: yarn run dev
+  
+  gql-gateway:
+    build:
+      context: ./gql-gateway
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./gql-gateway/src:/gql-gateway/app/src
+      - ./gql-gateway/nodemon.json:/parks/app/nodemon.json
+    container_name: gql-gateway
+    ports:
+      - 4000:4000
+    environment:
+      - ATTRACTIONS_SERVICE_URL=http://attractions
+      - PARKS_SERVICE_URL=http://parks
+    depends_on:
+      - attractions
+      - parks
     command: yarn run dev

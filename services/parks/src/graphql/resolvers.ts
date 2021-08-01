@@ -16,12 +16,14 @@ type ParkByPermalinkResponse =
   | FieldResponse<Park>
   | FieldResponse<{ message: string }>;
 
-const permalinkMapping = fromMap(new Map<string, ParkPermalink>([
-  ['ANIMAL_KINGDOM', ParkPermalink.AnimalKingdom],
-  ['EPCOT', ParkPermalink.Epcot],
-  ['HOLLYWOOD_STUDIOS', ParkPermalink.HollywoodStudios],
-  ['MAGIC_KINGDOM', ParkPermalink.MagicKingdom],
-]));
+const permalinkMapping = fromMap(
+  new Map<string, ParkPermalink>([
+    ['ANIMAL_KINGDOM', ParkPermalink.AnimalKingdom],
+    ['EPCOT', ParkPermalink.Epcot],
+    ['HOLLYWOOD_STUDIOS', ParkPermalink.HollywoodStudios],
+    ['MAGIC_KINGDOM', ParkPermalink.MagicKingdom],
+  ]),
+);
 
 export const resolvers: GraphQLResolverMap<ParkContext> = {
   Query: {

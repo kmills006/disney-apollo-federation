@@ -9,3 +9,7 @@ services:
     build:
       target: production
     command: node ./dist/index.js
+  gql-gateway:
+    build:
+      target: production
+    command: node ./dist/index.js
