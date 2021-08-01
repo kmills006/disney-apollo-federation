@@ -18,10 +18,10 @@ and has now turned into a repo for me to learn new languages.
 
 ### Running the backend
 
-#### Node
+#### Services
 
 ```
-$ cd node
+$ cd services/<service-name>
 $ yarn install
 $ yarn dev
 ```
@@ -38,11 +38,24 @@ $ yarn install
 $ yarn dev
 ```
 
+### Running With Docker
+#### In Development:
+```
+$ docker compose build
+$ docker compose up
+```
+
+#### In Production:
+```
+$ docker compose -f docker-compose.yml -f docker-compose.prod.yml build
+$ docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+```
+
 ### TODO
 
 - [ ] Python backend
 - [ ] Frontend
-- [ ] Docker Compose to run all the things
+- [x] Dockerize project
 - [ ] Scala backend
 - [ ] Node tests
 

@@ -10,8 +10,5 @@ module.exports = {
     'import/prefer-default-export': 0,
     'object-curly-newline': 'off',
   },
-  ignorePatterns: [
-    '*/**/dist/',
-    'node_modules',
-  ],
+  ignorePatterns: ['*/**/dist/', 'node_modules'],
 };

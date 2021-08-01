@@ -13,6 +13,6 @@ module.exports = {
   },
   ignorePatterns: [
     '*/**/dist/',
-    'node_modules',
+    'node_modules'
   ],
 };

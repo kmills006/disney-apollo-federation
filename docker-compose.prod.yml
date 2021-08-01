@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  attractions:
+    build:
+      target: production
+    command: node ./dist/index.js
+  parks:
+    build:
+      target: production
+    command: node ./dist/index.js
+  gql-gateway:
+    build:
+      target: production
+    command: node ./dist/index.js

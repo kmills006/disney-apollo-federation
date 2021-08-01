@@ -1,7 +1,7 @@
 import { initiateApolloServer } from './graphql/server';
 
 // TODO: Don't hard code the port in real life.
-const PORT = 4002;
+const PORT = process.env.PORT || 4001;
 
 const server = initiateApolloServer();
 

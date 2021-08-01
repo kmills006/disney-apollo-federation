@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec 'ts-node -r tsconfig-paths/register' src/index.ts",
-    "lint": "eslint --ext .ts src --quiet --cache"
+    "dev": "npx nodemon -L src/index.ts",
+    "lint": "npx eslint --ext .ts src --quiet --cache",
+    "build": "npx tsc -p ."
   },
   "devDependencies": {
     "@types/node": "^15.14.0",

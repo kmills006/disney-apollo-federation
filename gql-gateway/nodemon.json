@@ -1,0 +1,6 @@
+{
+    "watch": ["src/**/*.ts"],
+    "execMap": {
+        "ts": "node --no-lazy -r ts-node/register"
+    }
+}

@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+
+  attractions:
+    build:
+      context: ./services/attractions
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./services/attractions/src:/attractions/app/src
+      - ./services/attractions/nodemon.json:/attractions/app/nodemon.json
+    container_name: attractions
+    ports:
+      - 4001:80
+    environment:
+      - PORT=80
+    command: yarn run dev
+  
+  parks:
+    build:
+      context: ./services/parks
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./services/parks/src:/parks/app/src
+      - ./services/parks/nodemon.json:/parks/app/nodemon.json
+    container_name: parks
+    ports:
+      - 4002:80
+    environment:
+      - PORT=80
+    command: yarn run dev
+  
+  gql-gateway:
+    build:
+      context: ./gql-gateway
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./gql-gateway/src:/gql-gateway/app/src
+      - ./gql-gateway/nodemon.json:/parks/app/nodemon.json
+    container_name: gql-gateway
+    ports:
+      - 4000:4000
+    environment:
+      - ATTRACTIONS_SERVICE_URL=http://attractions
+      - PARKS_SERVICE_URL=http://parks
+    depends_on:
+      - attractions
+      - parks
+    command: yarn run dev
