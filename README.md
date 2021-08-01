@@ -18,10 +18,10 @@ and has now turned into a repo for me to learn new languages.
 
 ### Running the backend
 
-#### Node
+#### Services
 
 ```
-$ cd node
+$ cd services/<service-name>
 $ yarn install
 $ yarn dev
 ```
